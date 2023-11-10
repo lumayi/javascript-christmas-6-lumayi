@@ -1,4 +1,5 @@
 export const DISCOUNT = Object.freeze({
   XMAS_START_AMOUNT: 1000,
   PER_DAY_XMAS_INCREASE: 100,
+  YEAR_2023_DISCOUNT: 2023,
 });
