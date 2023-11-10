@@ -3,6 +3,7 @@ export const DISCOUNT = Object.freeze({
   PER_DAY_XMAS_INCREASE: 100,
   YEAR_2023_DISCOUNT: 2023,
   SPECIAL_DAYS: [3, 10, 17, 24, 25, 31],
+  COMPLIMENTARY_CHAMPAGNE: 25000,
 });
 
 export const ERROR_MESSAGE = Object.freeze({
