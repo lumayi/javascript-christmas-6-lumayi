@@ -12,4 +12,9 @@ export default class Discount {
     const total = desserts * DISCOUNT.YEAR_2023_DISCOUNT;
     return total;
   }
+
+  getWeekendDiscount(mains) {
+    const total = mains * DISCOUNT.YEAR_2023_DISCOUNT;
+    return total;
+  }
 }
