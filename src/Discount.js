@@ -1,10 +1,17 @@
-import { DISCOUNT } from './constants/constant';
+import { DISCOUNT } from './constants/constant.js';
 
 export default class Discount {
-  getXmasDicount(date) {
-    if (date > 25) return 0;
-    let total = DISCOUNT.XMAS_START_AMOUNT;
-    total += DISCOUNT.PER_DAY_XMAS_INCREASE * (date - 1);
+  #calendar;
+
+  constructor(calendar) {
+    this.#calendar = calendar;
+  }
+
+  getXmasDicount() {
+    const xMasDays = this.#calendar.checkXMasDays();
+    if (!xMasDays) return 0;
+    let total = DISCOUNT.BASIC_1000_DISCOUNT;
+    total += DISCOUNT.PER_DAY_XMAS_INCREASE * (xMasDays - 1);
     return total;
   }
 
@@ -15,6 +22,13 @@ export default class Discount {
 
   getWeekendDiscount(mains) {
     const total = mains * DISCOUNT.YEAR_2023_DISCOUNT;
+    return total;
+  }
+
+  getSpecialDayDiscount() {
+    const isSpecialDay = this.#calendar.checkIsSpecialDay();
+    if (!isSpecialDay) return 0;
+    const total = DISCOUNT.BASIC_1000_DISCOUNT;
     return total;
   }
 }
