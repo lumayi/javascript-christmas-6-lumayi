@@ -7,31 +7,28 @@ export default class Discount {
     this.#month = calendar;
   }
 
-  getXmasDicount() {
+  getXMasDicount() {
     const xMasDays = this.#month.checkXMasDays();
     if (!xMasDays) return 0;
 
-    let total = DISCOUNT.BASIC_1000_DISCOUNT;
-    total += DISCOUNT.PER_DAY_XMAS_INCREASE * (xMasDays - 1);
+    const total =
+      DISCOUNT.BASIC_1000_DISCOUNT +
+      DISCOUNT.PER_DAY_XMAS_INCREASE * (xMasDays - 1);
     return total;
   }
 
   getWeekdayDiscount(desserts) {
-    const total = desserts * DISCOUNT.YEAR_2023_DISCOUNT;
-    return total;
+    return desserts * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
   getWeekendDiscount(mains) {
-    const total = mains * DISCOUNT.YEAR_2023_DISCOUNT;
-    return total;
+    return mains * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
   getSpecialDayDiscount() {
     const isSpecialDay = this.#month.checkIsSpecialDay();
     if (!isSpecialDay) return 0;
-
-    const total = DISCOUNT.BASIC_1000_DISCOUNT;
-    return total;
+    return DISCOUNT.BASIC_1000_DISCOUNT;
   }
 
   getComplimentaryDiscount(price) {
