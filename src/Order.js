@@ -1,5 +1,4 @@
-import InputView from './InputView';
-import { ERROR_MESSAGE, ORDER } from './constants/constant';
+import { ERROR_MESSAGE } from './constants/constant';
 
 export default class Order {
   #menus;
@@ -11,15 +10,12 @@ export default class Order {
     this.#orders = [];
   }
 
-  async takeOrder() {
-    const order = await InputView.readOrder();
-  }
-
-  organizeOrder(order) {
+  takeOrder(order) {
     const organized = order.split(',');
     organized.forEach((item) => {
       this.#orders.push(this.#validate(item));
     });
+    this.#checkDrinkPolicy();
   }
 
   #validate(item) {
@@ -36,5 +32,12 @@ export default class Order {
     );
     if (existingMenu) throw new Error(ERROR_MESSAGE.INVALID_ORDER);
     return validated;
+  }
+
+  #checkDrinkPolicy() {
+    const drinks = this.#orders.filter((v) => v.section === 'drink');
+    if (this.#orders.length === drinks.length) {
+      throw new Error(ERROR_MESSAGE.NOT_ONLY_DRINKS);
+    }
   }
 }
