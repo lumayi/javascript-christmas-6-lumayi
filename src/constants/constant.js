@@ -39,5 +39,5 @@ export const ERROR_MESSAGE = Object.freeze({
   DISALLOW_ONLY_DRINKS: '[ERROR] 음료만 주문이 불가합니다. 다시 입력해 주세요.',
   MAXIMUM_ORDERS:
     '[ERROR] 수량 20개 초과시 주문이 불가합니다. 다시 입력해 주세요.',
-  DISALLOW_DISCOUNT: '[ERROR] 할인 적용 불가',
+  DISALLOW_DISCOUNT: '[ERROR] 최소 금액 미만으로 할인 적용 불가',
 });
