@@ -1,12 +1,12 @@
 import { Console } from '@woowacourse/mission-utils';
-import { toKoreanCurrency } from './utils/formatter';
-import Order from './Order';
+import toKoreanCurrency from './utils/formatter.js';
+import Order from './Order.js';
 
 const OutputView = {
   printMenu(order) {
-    Console.print('\n<주문 메뉴>\n');
+    Console.print('\n<주문 메뉴>');
     order.forEach((menu) => {
-      Console.print(`${menu.name} ${menu.quantity}개\n`);
+      Console.print(`${menu.name} ${menu.quantity}개`);
     });
   },
   printGreet() {
@@ -18,13 +18,13 @@ const OutputView = {
     );
   },
   printBeforeDiscount(order) {
-    Console.print('<할인 전 총주문 금액>\n');
+    Console.print('<할인 전 총주문 금액>');
     Console.print(`${toKoreanCurrency(Order.calculateTotalPrice(order))}원\n`);
   },
   printComplimentaryService(complimentary) {
     Console.print('<증정 메뉴>');
     if (complimentary) return Console.print('샴페인 1개');
-    return Console.print('<없음>');
+    return Console.print('없음');
   },
 };
 

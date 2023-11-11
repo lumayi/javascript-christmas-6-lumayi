@@ -1,4 +1,4 @@
-import { SECTION } from './constants/constant';
+import { SECTION } from './constants/constant.js';
 
 class Menu {
   #name;
