@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE } from './constants/constant';
+import { ERROR_MESSAGE, ORDER, SECTION } from './constants/constant';
 
 export default class Order {
   #menus;
@@ -15,7 +15,8 @@ export default class Order {
     organized.forEach((item) => {
       this.#orders.push(this.#validate(item));
     });
-    this.#checkDrinkPolicy();
+    this.#checkPolicies();
+    return this.#orders;
   }
 
   #validate(item) {
@@ -34,10 +35,27 @@ export default class Order {
     return validated;
   }
 
+  #checkPolicies() {
+    this.#checkDrinkPolicy();
+    this.#checkQuantityPolicy();
+  }
+
   #checkDrinkPolicy() {
-    const drinks = this.#orders.filter((v) => v.section === 'drink');
+    const drinks = this.#orders.filter(
+      (order) => order.section === SECTION.DRINK,
+    );
     if (this.#orders.length === drinks.length) {
-      throw new Error(ERROR_MESSAGE.NOT_ONLY_DRINKS);
+      throw new Error(ERROR_MESSAGE.DISALLOW_ONLY_DRINKS);
     }
+  }
+
+  #checkQuantityPolicy() {
+    let totalQuantity = 0;
+    this.#orders.forEach((order) => {
+      totalQuantity += order.quantity;
+      if (totalQuantity > ORDER.MAXIMUM_ORDERS) {
+        throw new Error(ERROR_MESSAGE.MAXIMUM_ORDERS);
+      }
+    });
   }
 }

@@ -6,6 +6,13 @@ export const DISCOUNT = Object.freeze({
   COMPLIMENTARY_CHAMPAGNE: 25000,
 });
 
+export const SECTION = Object.freeze({
+  MAIN: 'main',
+  APPETIZER: 'appeitzer',
+  DESSERT: 'dessert',
+  DRINK: 'drink',
+});
+
 export const ORDER = Object.freeze({
   MAXIMUM_ORDERS: 20,
 });
@@ -13,5 +20,7 @@ export const ORDER = Object.freeze({
 export const ERROR_MESSAGE = Object.freeze({
   INVALID_DATE: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요',
   INVALID_ORDER: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
-  NOT_ONLY_DRINKS: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
+  DISALLOW_ONLY_DRINKS: '[ERROR] 음료만 주문이 불가합니다. 다시 입력해 주세요.',
+  MAXIMUM_ORDERS:
+    '[ERROR] 수량 20개 초과시 주문이 불가합니다. 다시 입력해 주세요.',
 });
