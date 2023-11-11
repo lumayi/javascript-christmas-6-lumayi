@@ -19,6 +19,15 @@ export const ORDER = Object.freeze({
   MAXIMUM_ORDERS: 20,
 });
 
+export const BADGE = Object.freeze({
+  STAR: '별',
+  TREE: '트리',
+  SANTA: '산타',
+  PRICE_OF_STAR: 5000,
+  PRICE_OF_TREE: 10000,
+  PRICE_OF_SANTA: 20000,
+});
+
 export const ERROR_MESSAGE = Object.freeze({
   INVALID_DATE: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요',
   INVALID_ORDER: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
