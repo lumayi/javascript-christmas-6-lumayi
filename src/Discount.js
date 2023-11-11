@@ -3,8 +3,8 @@ import { DISCOUNT } from './constants/constant.js';
 export default class Discount {
   #month;
 
-  constructor(calendar) {
-    this.#month = calendar;
+  constructor(month) {
+    this.#month = month;
   }
 
   getXMasDicount() {
