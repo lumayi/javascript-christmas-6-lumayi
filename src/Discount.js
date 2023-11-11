@@ -1,3 +1,4 @@
+import Order from './Order.js';
 import { DISCOUNT, ERROR_MESSAGE, SECTION } from './constants/constant.js';
 
 export default class Discount {
@@ -12,18 +13,10 @@ export default class Discount {
   }
 
   #validateMinimumPrice(order) {
-    const price = Discount.calculateBeforeDiscountPrice(order);
+    const price = Order.calculateTotalPrice(order);
     if (price < DISCOUNT.MIN_DISCOUNTABLE_PRICE) {
       throw new Error(ERROR_MESSAGE.DISALLOW_DISCOUNT);
     }
-  }
-
-  static calculateBeforeDiscountPrice(order) {
-    let price = 0;
-    order.forEach((menu) => {
-      price += menu.totalPrice;
-    });
-    return price;
   }
 
   getXMasDicount() {
@@ -55,7 +48,7 @@ export default class Discount {
   }
 
   getComplimentaryDiscount() {
-    const price = Discount.calculateBeforeDiscountPrice(this.#order);
+    const price = Order.calculateTotalPrice(this.#order);
     let champagne = DISCOUNT.COMPLIMENTARY_CHAMPAGNE;
     if (price < DISCOUNT.MIN_COMPLIMENTARY_SERVICE_PRICE) {
       champagne = 0;

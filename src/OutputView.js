@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import Discount from './Discount';
 import { toKoreanCurrency } from './utils/formatter';
+import Order from './Order';
 
 const OutputView = {
   printMenu(order) {
@@ -19,9 +19,7 @@ const OutputView = {
   },
   printBeforeDiscount(order) {
     Console.print('<할인 전 총주문 금액>\n');
-    Console.print(
-      `${toKoreanCurrency(Discount.calculateBeforeDiscountPrice(order))}원\n`,
-    );
+    Console.print(`${toKoreanCurrency(Order.calculateTotalPrice(order))}원\n`);
   },
 };
 

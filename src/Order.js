@@ -10,6 +10,14 @@ export default class Order {
     this.#orders = [];
   }
 
+  static calculateTotalPrice(order) {
+    let price = 0;
+    order.forEach((menu) => {
+      price += menu.totalPrice;
+    });
+    return price;
+  }
+
   placeOrder(order) {
     const organized = order.split(',');
     organized.forEach((item) => {
