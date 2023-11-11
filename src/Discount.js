@@ -7,7 +7,6 @@ export default class Discount {
   #order;
 
   constructor(month, order) {
-    this.#validateMinimumPrice(order);
     this.#month = month;
     this.#order = order;
   }
@@ -15,11 +14,13 @@ export default class Discount {
   #validateMinimumPrice(order) {
     const price = Order.calculateTotalPrice(order);
     if (price < DISCOUNT.MIN_DISCOUNTABLE_PRICE) {
-      throw new Error(ERROR_MESSAGE.DISALLOW_DISCOUNT);
+      // throw new Error(ERROR_MESSAGE.DISALLOW_DISCOUNT);
+      return 0;
     }
   }
 
   getXMasDicount() {
+    this.#validateMinimumPrice(this.#order);
     const xMasDays = this.#month.checkXMasDays();
     if (!xMasDays) return 0;
 
@@ -30,6 +31,9 @@ export default class Discount {
   }
 
   getWeekdayDiscount() {
+    this.#validateMinimumPrice(this.#order);
+    const isWeekend = this.#month.checkIsWeekend();
+    if (isWeekend) return 0;
     const desserts = this.#order.filter(
       (order) => order.section === SECTION.DESSERT,
     );
@@ -37,17 +41,22 @@ export default class Discount {
   }
 
   getWeekendDiscount() {
+    this.#validateMinimumPrice(this.#order);
+    const isWeekend = this.#month.checkIsWeekend();
+    if (!isWeekend) return 0;
     const mains = this.#order.filter((order) => order.section === SECTION.MAIN);
     return mains * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
   getSpecialDayDiscount() {
+    this.#validateMinimumPrice(this.#order);
     const isSpecialDay = this.#month.checkIsSpecialDay();
     if (!isSpecialDay) return 0;
     return DISCOUNT.BASIC_1000_DISCOUNT;
   }
 
   getComplimentaryDiscount() {
+    this.#validateMinimumPrice(this.#order);
     const price = Order.calculateTotalPrice(this.#order);
     let champagne = DISCOUNT.COMPLIMENTARY_CHAMPAGNE;
     if (price < DISCOUNT.MIN_COMPLIMENTARY_SERVICE_PRICE) {

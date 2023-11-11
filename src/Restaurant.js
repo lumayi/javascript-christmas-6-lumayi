@@ -16,5 +16,9 @@ export default class Restaurant {
     const organizedOrder = order.placeOrder(input);
     OutputView.printMenu(organizedOrder);
     OutputView.printBeforeDiscount(organizedOrder);
+    const december = new December(date);
+    const discount = new Discount(december, organizedOrder);
+    const complimentary = discount.getComplimentaryDiscount();
+    OutputView.printComplimentaryService(complimentary);
   }
 }

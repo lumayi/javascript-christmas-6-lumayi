@@ -21,6 +21,11 @@ const OutputView = {
     Console.print('<할인 전 총주문 금액>\n');
     Console.print(`${toKoreanCurrency(Order.calculateTotalPrice(order))}원\n`);
   },
+  printComplimentaryService(complimentary) {
+    Console.print('<증정 메뉴>');
+    if (complimentary) return Console.print('샴페인 1개');
+    return Console.print('<없음>');
+  },
 };
 
 export default OutputView;
