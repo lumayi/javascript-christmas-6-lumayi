@@ -4,6 +4,7 @@ export const DISCOUNT = Object.freeze({
   YEAR_2023_DISCOUNT: 2023,
   SPECIAL_DAYS: [3, 10, 17, 24, 25, 31],
   COMPLIMENTARY_CHAMPAGNE: 25000,
+  MIN_COMPLIMENTARY_SERVICE_PRICE: 120000,
 });
 
 export const SECTION = Object.freeze({

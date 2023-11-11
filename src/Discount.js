@@ -1,10 +1,13 @@
-import { DISCOUNT } from './constants/constant.js';
+import { DISCOUNT, SECTION } from './constants/constant.js';
 
 export default class Discount {
   #month;
 
-  constructor(month) {
+  #order;
+
+  constructor(month, order) {
     this.#month = month;
+    this.#order = order;
   }
 
   getXMasDicount() {
@@ -17,11 +20,15 @@ export default class Discount {
     return total;
   }
 
-  getWeekdayDiscount(desserts) {
+  getWeekdayDiscount() {
+    const desserts = this.#order.filter(
+      (order) => order.section === SECTION.DESSERT,
+    );
     return desserts * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
-  getWeekendDiscount(mains) {
+  getWeekendDiscount() {
+    const mains = this.#order.filter((order) => order.section === SECTION.MAIN);
     return mains * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
@@ -31,11 +38,20 @@ export default class Discount {
     return DISCOUNT.BASIC_1000_DISCOUNT;
   }
 
-  getComplimentaryDiscount(price) {
+  getComplimentaryDiscount() {
+    const price = this.#calculateTotalPrice();
     let champagne = DISCOUNT.COMPLIMENTARY_CHAMPAGNE;
-    if (price < 120000) {
+    if (price < DISCOUNT.MIN_COMPLIMENTARY_SERVICE_PRICE) {
       champagne = 0;
     }
     return champagne;
+  }
+
+  #calculateTotalPrice() {
+    let price = 0;
+    this.#order.forEach((order) => {
+      price += order.totalPrice;
+    });
+    return price;
   }
 }
