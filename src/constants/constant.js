@@ -15,6 +15,11 @@ export const SECTION = Object.freeze({
   DRINK: 'drink',
 });
 
+export const DATE = Object.freeze({
+  DECEMBER: 'December',
+  YEAR_2023: '2023',
+});
+
 export const ORDER = Object.freeze({
   MAXIMUM_ORDERS: 20,
 });

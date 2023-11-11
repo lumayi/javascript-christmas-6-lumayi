@@ -1,4 +1,4 @@
-import { DISCOUNT, ERROR_MESSAGE } from './constants/constant.js';
+import { DATE, DISCOUNT, ERROR_MESSAGE } from './constants/constant.js';
 
 export default class December {
   #date;
@@ -25,5 +25,11 @@ export default class December {
   checkIsSpecialDay() {
     const isSpecialDay = this.#specialDays.includes(this.#date);
     return isSpecialDay;
+  }
+
+  checkIsWeekend() {
+    const date = new Date(`${DATE.DECEMBER} ${this.#date}, ${DATE.YEAR_2023}`);
+    const dayOfWeek = date.getDay();
+    return dayOfWeek === 0 || dayOfWeek === 6;
   }
 }
