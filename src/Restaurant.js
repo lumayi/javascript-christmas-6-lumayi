@@ -17,7 +17,22 @@ export default class Restaurant {
     OutputView.printMenu(organizedOrder);
     OutputView.printBeforeDiscount(organizedOrder);
     const discount = new Discount(december, organizedOrder);
+    this.#anounceBenefits(discount);
+  }
+
+  #anounceBenefits(discount) {
     const complimentary = discount.getComplimentaryDiscount();
+    const xmas = discount.getXMasDicount();
+    const week = discount.getWeekdayDiscount();
+    const weekend = discount.getWeekendDiscount();
+    const special = discount.getSpecialDayDiscount();
     OutputView.printComplimentaryService(complimentary);
+    OutputView.printDetailsOfBenefits(
+      xmas,
+      week,
+      weekend,
+      special,
+      complimentary,
+    );
   }
 }

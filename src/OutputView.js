@@ -18,13 +18,25 @@ const OutputView = {
     );
   },
   printBeforeDiscount(order) {
-    Console.print('<할인 전 총주문 금액>');
-    Console.print(`${toKoreanCurrency(Order.calculateTotalPrice(order))}원\n`);
+    Console.print('\n<할인 전 총주문 금액>');
+    Console.print(`${toKoreanCurrency(Order.calculateTotalPrice(order))}원`);
   },
   printComplimentaryService(complimentary) {
-    Console.print('<증정 메뉴>');
+    Console.print('\n<증정 메뉴>');
     if (complimentary) return Console.print('샴페인 1개');
     return Console.print('없음');
+  },
+  printDetailsOfBenefits(xmas, week, weekend, special, complimentary) {
+    Console.print('\n<혜택 내역>');
+    if (xmas) {
+      Console.print(`크리스마스 디데이 할인: -${toKoreanCurrency(xmas)}원`);
+    }
+    if (week) Console.print(`평일 할인: -${toKoreanCurrency(week)}원`);
+    if (weekend) Console.print(`주말 할인: -${toKoreanCurrency(weekend)}원`);
+    if (special) Console.print(`특별 할인: -${toKoreanCurrency(special)}원`);
+    if (complimentary) {
+      Console.print(`증정 이벤트: -${toKoreanCurrency(complimentary)}원`);
+    }
   },
 };
 
