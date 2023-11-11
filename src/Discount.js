@@ -1,4 +1,4 @@
-import { DISCOUNT, SECTION } from './constants/constant.js';
+import { DISCOUNT, ERROR_MESSAGE, SECTION } from './constants/constant.js';
 
 export default class Discount {
   #month;
@@ -6,8 +6,24 @@ export default class Discount {
   #order;
 
   constructor(month, order) {
+    this.#validateMinimumPrice(order);
     this.#month = month;
     this.#order = order;
+  }
+
+  #validateMinimumPrice() {
+    const price = this.#calculateTotalPrice();
+    if (price < DISCOUNT.MIN_DISCOUNTABLE_PRICE) {
+      throw new Error(ERROR_MESSAGE.DISALLOW_DISCOUNT);
+    }
+  }
+
+  #calculateTotalPrice(order) {
+    let price = 0;
+    order.forEach((menu) => {
+      price += menu.totalPrice;
+    });
+    return price;
   }
 
   getXMasDicount() {
@@ -39,19 +55,11 @@ export default class Discount {
   }
 
   getComplimentaryDiscount() {
-    const price = this.#calculateTotalPrice();
+    const price = this.#calculateTotalPrice(this.#order);
     let champagne = DISCOUNT.COMPLIMENTARY_CHAMPAGNE;
     if (price < DISCOUNT.MIN_COMPLIMENTARY_SERVICE_PRICE) {
       champagne = 0;
     }
     return champagne;
-  }
-
-  #calculateTotalPrice() {
-    let price = 0;
-    this.#order.forEach((order) => {
-      price += order.totalPrice;
-    });
-    return price;
   }
 }
