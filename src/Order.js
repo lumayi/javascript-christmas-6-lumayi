@@ -10,7 +10,7 @@ export default class Order {
     this.#orders = [];
   }
 
-  takeOrder(order) {
+  placeOrder(order) {
     const organized = order.split(',');
     organized.forEach((item) => {
       this.#orders.push(this.#validate(item));

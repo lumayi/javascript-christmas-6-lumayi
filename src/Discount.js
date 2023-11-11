@@ -11,14 +11,14 @@ export default class Discount {
     this.#order = order;
   }
 
-  #validateMinimumPrice() {
-    const price = this.#calculateTotalPrice();
+  #validateMinimumPrice(order) {
+    const price = Discount.calculateBeforeDiscountPrice(order);
     if (price < DISCOUNT.MIN_DISCOUNTABLE_PRICE) {
       throw new Error(ERROR_MESSAGE.DISALLOW_DISCOUNT);
     }
   }
 
-  #calculateTotalPrice(order) {
+  static calculateBeforeDiscountPrice(order) {
     let price = 0;
     order.forEach((menu) => {
       price += menu.totalPrice;
@@ -55,7 +55,7 @@ export default class Discount {
   }
 
   getComplimentaryDiscount() {
-    const price = this.#calculateTotalPrice(this.#order);
+    const price = Discount.calculateBeforeDiscountPrice(this.#order);
     let champagne = DISCOUNT.COMPLIMENTARY_CHAMPAGNE;
     if (price < DISCOUNT.MIN_COMPLIMENTARY_SERVICE_PRICE) {
       champagne = 0;
