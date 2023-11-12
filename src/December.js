@@ -30,6 +30,6 @@ export default class December {
   checkIsWeekend() {
     const date = new Date(`${DATE.DECEMBER} ${this.#date}, ${DATE.YEAR_2023}`);
     const dayOfWeek = date.getDay();
-    return dayOfWeek === 0 || dayOfWeek === 6;
+    return dayOfWeek === 5 || dayOfWeek === 6;
   }
 }

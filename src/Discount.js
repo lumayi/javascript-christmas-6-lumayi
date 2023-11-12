@@ -35,14 +35,16 @@ export default class Discount {
     const desserts = this.#order.filter(
       (order) => order.section === SECTION.DESSERT,
     );
-    return desserts * DISCOUNT.YEAR_2023_DISCOUNT;
+    const quantity = Order.calculateTotalQuantity(desserts);
+    return quantity * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
   getWeekendDiscount() {
     const isWeekend = this.#month.checkIsWeekend();
     if (!isWeekend) return 0;
     const mains = this.#order.filter((order) => order.section === SECTION.MAIN);
-    return mains * DISCOUNT.YEAR_2023_DISCOUNT;
+    const quantity = Order.calculateTotalQuantity(mains);
+    return quantity * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
   getSpecialDayDiscount() {

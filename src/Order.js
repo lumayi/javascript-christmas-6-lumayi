@@ -18,6 +18,14 @@ export default class Order {
     return price;
   }
 
+  static calculateTotalQuantity(order) {
+    let quantity = 0;
+    order.forEach((menu) => {
+      quantity += menu.quantity;
+    });
+    return quantity;
+  }
+
   placeOrder(order) {
     const organized = order.split(',');
     organized.forEach((item) => {
