@@ -1,3 +1,4 @@
+import Badge from './Badge.js';
 import December from './December.js';
 import Discount from './Discount.js';
 import InputView from './InputView.js';
@@ -21,6 +22,10 @@ export default class Restaurant {
     this.#anounceBenefits(possibleDiscounts);
     OutputView.printTotalDiscountPrice(possibleDiscounts);
     OutputView.printFinalCheckPrice(organizedOrder, possibleDiscounts);
+    const badge = Badge.awardBadge(
+      Object.values(possibleDiscounts).reduce((a, c) => a + c, 0),
+    );
+    OutputView.printEventBadge(badge);
   }
 
   #anounceBenefits(discounts) {

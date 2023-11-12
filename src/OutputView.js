@@ -58,6 +58,10 @@ const OutputView = {
       `${toKoreanCurrency(price - (xmas + week + weekend + special))}원`,
     );
   },
+  printEventBadge(badge) {
+    Console.print('\n<12월 이벤트 배지>');
+    Console.print(badge);
+  },
 };
 
 export default OutputView;
