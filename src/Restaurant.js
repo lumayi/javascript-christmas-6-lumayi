@@ -19,6 +19,7 @@ export default class Restaurant {
     const discount = new Discount(december, organizedOrder);
     const possibleDiscounts = discount.getPossibleDiscounts();
     this.#anounceBenefits(possibleDiscounts);
+    OutputView.printTotalDiscountPrice(possibleDiscounts);
   }
 
   #anounceBenefits(discounts) {

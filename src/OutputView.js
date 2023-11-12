@@ -41,6 +41,15 @@ const OutputView = {
       Console.print('없음');
     }
   },
+  printTotalDiscountPrice(discounts) {
+    const price = Object.values(discounts).reduce(
+      (acc, current) => acc + current,
+      0,
+    );
+    Console.print('\n<총혜택 금액>');
+    if (!price) return Console.print('없음');
+    return Console.print(`-${toKoreanCurrency(price)}원`);
+  },
 };
 
 export default OutputView;
