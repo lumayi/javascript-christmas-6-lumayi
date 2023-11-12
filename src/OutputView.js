@@ -50,6 +50,14 @@ const OutputView = {
     if (!price) return Console.print('없음');
     return Console.print(`-${toKoreanCurrency(price)}원`);
   },
+  printFinalCheckPrice(order, discounts) {
+    const price = Order.calculateTotalPrice(order);
+    const { xmas, week, weekend, special } = discounts;
+    Console.print('\n<할인 후 예상 결제 금액>');
+    Console.print(
+      `${toKoreanCurrency(price - (xmas + week + weekend + special))}원`,
+    );
+  },
 };
 
 export default OutputView;
