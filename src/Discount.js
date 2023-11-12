@@ -7,19 +7,32 @@ export default class Discount {
   #order;
 
   constructor(month, order) {
-    this.#validateMinimumPrice(order);
     this.#month = month;
     this.#order = order;
   }
 
   #validateMinimumPrice(order) {
+    let discountable = true;
     const price = Order.calculateTotalPrice(order);
     if (price < DISCOUNT.MIN_DISCOUNTABLE_PRICE) {
-      throw new Error(ERROR_MESSAGE.DISALLOW_DISCOUNT);
+      discountable = false;
     }
+    return discountable;
   }
 
-  getXMasDicount() {
+  getPossibleDiscounts() {
+    const discountable = this.#validateMinimumPrice(this.#order);
+    if (!discountable) return 0;
+    return {
+      complimentary: this.#getComplimentaryDiscount(),
+      xmas: this.#getXMasDicount(),
+      week: this.#getWeekdayDiscount(),
+      weekend: this.#getWeekendDiscount(),
+      special: this.#getSpecialDayDiscount(),
+    };
+  }
+
+  #getXMasDicount() {
     const xMasDays = this.#month.checkXMasDays();
     if (!xMasDays) return 0;
 
@@ -29,7 +42,7 @@ export default class Discount {
     return total;
   }
 
-  getWeekdayDiscount() {
+  #getWeekdayDiscount() {
     const isWeekend = this.#month.checkIsWeekend();
     if (isWeekend) return 0;
     const desserts = this.#order.filter(
@@ -39,7 +52,7 @@ export default class Discount {
     return quantity * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
-  getWeekendDiscount() {
+  #getWeekendDiscount() {
     const isWeekend = this.#month.checkIsWeekend();
     if (!isWeekend) return 0;
     const mains = this.#order.filter((order) => order.section === SECTION.MAIN);
@@ -47,13 +60,13 @@ export default class Discount {
     return quantity * DISCOUNT.YEAR_2023_DISCOUNT;
   }
 
-  getSpecialDayDiscount() {
+  #getSpecialDayDiscount() {
     const isSpecialDay = this.#month.checkIsSpecialDay();
     if (!isSpecialDay) return 0;
     return DISCOUNT.BASIC_1000_DISCOUNT;
   }
 
-  getComplimentaryDiscount() {
+  #getComplimentaryDiscount() {
     const price = Order.calculateTotalPrice(this.#order);
     let champagne = DISCOUNT.COMPLIMENTARY_CHAMPAGNE;
     if (price < DISCOUNT.MIN_COMPLIMENTARY_SERVICE_PRICE) {

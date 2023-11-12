@@ -37,6 +37,9 @@ const OutputView = {
     if (complimentary) {
       Console.print(`증정 이벤트: -${toKoreanCurrency(complimentary)}원`);
     }
+    if (!xmas && !week && !weekend && !special && !complimentary) {
+      Console.print('없음');
+    }
   },
 };
 
