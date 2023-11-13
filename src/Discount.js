@@ -1,5 +1,5 @@
 import Order from './Order.js';
-import { DISCOUNT, ERROR_MESSAGE, SECTION } from './constants/constant.js';
+import { DISCOUNT, SECTION } from './constants/constant.js';
 
 export default class Discount {
   #month;
