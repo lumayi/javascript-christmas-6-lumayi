@@ -2,10 +2,10 @@ import { Console } from '@woowacourse/mission-utils';
 import Badge from './Badge.js';
 import December from './December.js';
 import Discount from './Discount.js';
-import InputView from './InputView.js';
+import InputView from './view/InputView.js';
 import Menus from './Menu.js';
 import Order from './Order.js';
-import OutputView from './OutputView.js';
+import OutputView from './view/OutputView.js';
 
 export default class Restaurant {
   #order;

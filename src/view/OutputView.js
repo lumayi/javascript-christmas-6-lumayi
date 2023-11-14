@@ -1,6 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
-import toKoreanCurrency from './utils/formatter.js';
-import Order from './Order.js';
+import toKoreanCurrency from '../utils/formatter.js';
+import Order from '../Order.js';
 
 const OutputView = {
   printMenu(order) {
@@ -61,7 +61,6 @@ const OutputView = {
   },
   printEventBadge(badge) {
     Console.print('\n<12월 이벤트 배지>');
-    if (!badge) return Console.print('없음');
     return Console.print(badge);
   },
 };

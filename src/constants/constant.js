@@ -28,6 +28,7 @@ export const BADGE = Object.freeze({
   STAR: '별',
   TREE: '트리',
   SANTA: '산타',
+  NOTHING: '없음',
   PRICE_OF_STAR: 5000,
   PRICE_OF_TREE: 10000,
   PRICE_OF_SANTA: 20000,
