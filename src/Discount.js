@@ -11,15 +11,6 @@ export default class Discount {
     this.#order = order;
   }
 
-  #validateMinimumPrice(order) {
-    let discountable = true;
-    const price = Order.calculateTotalPrice(order);
-    if (price < DISCOUNT.MIN_DISCOUNTABLE_PRICE) {
-      discountable = false;
-    }
-    return discountable;
-  }
-
   getPossibleDiscounts() {
     const discountable = this.#validateMinimumPrice(this.#order);
     if (!discountable) return 0;
@@ -30,6 +21,15 @@ export default class Discount {
       weekend: this.#getWeekendDiscount(),
       special: this.#getSpecialDayDiscount(),
     };
+  }
+
+  #validateMinimumPrice(order) {
+    let discountable = true;
+    const price = Order.calculateTotalPrice(order);
+    if (price < DISCOUNT.MIN_DISCOUNTABLE_PRICE) {
+      discountable = false;
+    }
+    return discountable;
   }
 
   #getXMasDicount() {

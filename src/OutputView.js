@@ -54,13 +54,15 @@ const OutputView = {
     const price = Order.calculateTotalPrice(order);
     const { xmas, week, weekend, special } = discounts;
     Console.print('\n<할인 후 예상 결제 금액>');
-    Console.print(
+    if (discounts === 0) return Console.print(`${toKoreanCurrency(price)}원`);
+    return Console.print(
       `${toKoreanCurrency(price - (xmas + week + weekend + special))}원`,
     );
   },
   printEventBadge(badge) {
     Console.print('\n<12월 이벤트 배지>');
-    Console.print(badge);
+    if (!badge) return Console.print('없음');
+    return Console.print(badge);
   },
 };
 
