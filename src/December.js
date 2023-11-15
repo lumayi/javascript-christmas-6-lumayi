@@ -12,13 +12,13 @@ export default class December {
   }
 
   #validate(date) {
-    if (!Number.isInteger(date) || date < 1 || date > 31) {
+    if (!Number.isInteger(date) || date < DATE.START || date > DATE.LAST) {
       throw new Error(ERROR_MESSAGE.INVALID_DATE);
     }
   }
 
   checkXMasDays() {
-    const xMasDays = this.#date < 26 ? this.#date : 0;
+    const xMasDays = this.#date < DATE.XMAS_EXPIRE_DATE ? this.#date : 0;
     return xMasDays;
   }
 

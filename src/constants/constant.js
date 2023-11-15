@@ -18,6 +18,9 @@ export const SECTION = Object.freeze({
 export const DATE = Object.freeze({
   DECEMBER: 'December',
   YEAR_2023: '2023',
+  START: 1,
+  LAST: 31,
+  XMAS_EXPIRE_DATE: 26,
 });
 
 export const ORDER = Object.freeze({
