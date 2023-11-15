@@ -13,7 +13,7 @@ export default class December {
 
   #validate(date) {
     if (!Number.isInteger(date) || date < 1 || date > 31) {
-      throw Error(ERROR_MESSAGE.INVALID_DATE);
+      throw new Error(ERROR_MESSAGE.INVALID_DATE);
     }
   }
 
