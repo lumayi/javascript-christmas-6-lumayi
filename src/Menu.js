@@ -1,4 +1,4 @@
-import { SECTION } from './constants/constant.js';
+import { NAME, PRICE, SECTION } from './constants/constant.js';
 
 export class Menu {
   #name;
@@ -25,18 +25,18 @@ export class Menu {
 }
 
 const Menus = [
-  new Menu('양송이수프', 6000, SECTION.APPETIZER),
-  new Menu('타파스', 5500, SECTION.APPETIZER),
-  new Menu('시저샐러드', 8000, SECTION.APPETIZER),
-  new Menu('티본스테이크', 55000, SECTION.MAIN),
-  new Menu('바비큐립', 54000, SECTION.MAIN),
-  new Menu('해산물파스타', 35000, SECTION.MAIN),
-  new Menu('크리스마스파스타', 25000, SECTION.MAIN),
-  new Menu('초코케이크', 15000, SECTION.DESSERT),
-  new Menu('아이스크림', 5000, SECTION.DESSERT),
-  new Menu('제로콜라', 3000, SECTION.DRINK),
-  new Menu('레드와인', 60000, SECTION.DRINK),
-  new Menu('샴페인', 25000, SECTION.DRINK),
+  new Menu(NAME.MUSHROOM_SOUP, PRICE.MUSHROOM_SOUP, SECTION.APPETIZER),
+  new Menu(NAME.TAPAS, PRICE.TAPAS, SECTION.APPETIZER),
+  new Menu(NAME.CEASER_SALAD, PRICE.CEASER_SALAD, SECTION.APPETIZER),
+  new Menu(NAME.T_BONE, PRICE.T_BONE, SECTION.MAIN),
+  new Menu(NAME.BBQ_RIB, PRICE.BBQ_RIB, SECTION.MAIN),
+  new Menu(NAME.SEAFOOD_PASTA, PRICE.SEAFOOD_PASTA, SECTION.MAIN),
+  new Menu(NAME.XMAS_PASTA, PRICE.XMAS_PASTA, SECTION.MAIN),
+  new Menu(NAME.CHOCO_CAKE, PRICE.CHOCO_CAKE, SECTION.DESSERT),
+  new Menu(NAME.ICECREAM, PRICE.ICECREAM, SECTION.DESSERT),
+  new Menu(NAME.ZERO_COKE, PRICE.ZERO_COKE, SECTION.DRINK),
+  new Menu(NAME.RED_WINE, PRICE.RED_WINE, SECTION.DRINK),
+  new Menu(NAME.CHAMPAGNE, PRICE.CHAMPAGNE, SECTION.DRINK),
 ];
 
 export default Menus;
