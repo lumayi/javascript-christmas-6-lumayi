@@ -1,6 +1,6 @@
 import { SECTION } from './constants/constant.js';
 
-class Menu {
+export class Menu {
   #name;
 
   #price;
