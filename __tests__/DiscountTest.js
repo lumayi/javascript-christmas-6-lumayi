@@ -1,6 +1,5 @@
 import December from '../src/December';
 import Discount from '../src/Discount';
-import Order from '../src/Order';
 
 describe('기능테스트', () => {
   const order = [
