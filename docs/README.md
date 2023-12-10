@@ -28,4 +28,4 @@
 - [ ] 총 혜택 금액을 출력한다. #Output-printTotalBenefits
 - [ ] 할인 후, 예상 결제 금액을 구한다. #Discount-getDiscountedAppliedPrice
 - [ ] 할인 후, 예상 결제 금액을 출력한다. #Output-printDiscountAppliedPrice
-- [ ] 혜택 금액에 따른 배지를 부여한다. #Badge-getBadge
+- [x] 혜택 금액에 따른 배지를 부여한다.
