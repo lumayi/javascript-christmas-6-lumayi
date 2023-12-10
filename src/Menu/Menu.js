@@ -13,7 +13,7 @@ class Menu {
     this.#section = section;
   }
 
-  getMenuOrderInfo(quantity) {
+  getMenuInfo(quantity) {
     const totalPrice = this.#price * quantity;
     return {
       name: this.#name,
