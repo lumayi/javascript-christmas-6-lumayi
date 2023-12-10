@@ -21,7 +21,7 @@
   - [x] 평일 할인
   - [x] 주말 할인
   - [x] 특별 할인
-  - [ ] 증정 이벤트 할인 getComplimentaryDiscount
+  - [x] 증정 이벤트 할인
   - [ ] 혜택이 없을 시, <없음>으로 출력
   - [ ] 적용된 할인 내역을 출력한다. Output-printDiscount
 - [ ] 총 혜택 금액을 구한다. #Discount-getTotalBenefits
