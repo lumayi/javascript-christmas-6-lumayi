@@ -7,3 +7,7 @@ export const DECEMBER = Object.freeze({
   END_DATE: 31,
   XMAS_DATE: 25,
 });
+
+export const DISCOUNT = Object.freeze({
+  XMAS_BASIC_DISCOUNT: 1000,
+});

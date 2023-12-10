@@ -18,4 +18,9 @@ export default class December {
       throw new Error(ERROR_MSG.INVALID_DATE);
     }
   }
+
+  getDaysBeforeXmas() {
+    const days = this.#date > DECEMBER.XMAS_DATE ? 0 : this.#date - 1;
+    return days;
+  }
 }

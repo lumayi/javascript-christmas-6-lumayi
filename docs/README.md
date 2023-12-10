@@ -3,7 +3,7 @@
 ## 기능 요구 사항
 
 - [ ] 12월 중 방문할 날짜를 받는다. #Output-getOrder
-  - [x] 1-31 사이의 정수가 아닐시에 예외 처리 #Month -> #December
+  - [x] 1-31 사이의 정수가 아닐시에 예외 처리
   - [ ] 이벤트 기간은 12월까지이다. #December
 - [x] 주문가능한 메뉴를 정의
 - [ ] 주문할 메뉴와 개수를 받는다. #Input, #Order-placeOrder
@@ -13,11 +13,11 @@
   - [x] 전체 주문 메뉴가 20개 초과일 시, 예외 처리
   - [x] 음료만 주문시, 예외 처리
 - [ ] 주문한 메뉴를 출력한다. #Output-printOrders
-- [x] 총 주문 금액을 구한다. #Order-getTotalPrice
+- [x] 총 주문 금액을 구한다.
 - [ ] 할인 전 총 주문 금액을 출력한다. #Output-printTotalOrderPrice
 - [ ] 총 주문 금액 10,000원 미만시 이벤트 적용 불가 #Discount
 - [ ] 선택한 날에 맞는 할인을 적용한다. #Dicount-getPossibleDiscounts
-  - [ ] 크리스마스 디데이 할인 getXmasDiscount
+  - [x] 크리스마스 디데이 할인 getXmasDiscount
   - [ ] 평일 할인 getWeekdayDiscount
   - [ ] 주말 할인 getWeekendDiscount
   - [ ] 특별 할인 getSpecialDsicount
