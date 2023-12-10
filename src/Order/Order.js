@@ -18,17 +18,14 @@ export default class Order {
       this.#order.push(found);
     });
     this.#checkPolicies();
+    return this.#order;
   }
 
   #validate(name, quantity) {
     const found = this.#menu.find(
       (menu) => menu.getMenuInfo(quantity).name === name,
     );
-    if (
-      !found ||
-      !quantity ||
-      quantity < 1 ||
-    ) {
+    if (!found || !quantity || quantity < 1) {
       throw new Error(ERROR_MSG.INVALID_MENU);
     }
     const duplicated = this.#order.find((order) => order.name === name);
@@ -49,7 +46,18 @@ export default class Order {
   }
 
   #checkDrinksOnly() {
-    const drinks = this.#order.filter((order) => order.section === SECTION.DRINK);
-    if(drinks.length === this.#order.length) throw new Error(ERROR_MSG.INVALID_MENU)
+    const drinks = this.#order.filter(
+      (order) => order.section === SECTION.DRINK,
+    );
+    if (drinks.length === this.#order.length) {
+      throw new Error(ERROR_MSG.INVALID_MENU);
+    }
+  }
+
+  getTotalPrice() {
+    const total = this.#order.reduce(
+      (acc, current) => acc + current.totalPrice,
+    );
+    return total;
   }
 }

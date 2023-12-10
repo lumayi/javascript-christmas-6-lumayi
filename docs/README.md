@@ -13,7 +13,7 @@
   - [x] 전체 주문 메뉴가 20개 초과일 시, 예외 처리
   - [x] 음료만 주문시, 예외 처리
 - [ ] 주문한 메뉴를 출력한다. #Output-printOrders
-- [ ] 총 주문 금액을 구한다. #Order-getTotalPrice
+- [x] 총 주문 금액을 구한다. #Order-getTotalPrice
 - [ ] 할인 전 총 주문 금액을 출력한다. #Output-printTotalOrderPrice
 - [ ] 총 주문 금액 10,000원 미만시 이벤트 적용 불가 #Discount
 - [ ] 선택한 날에 맞는 할인을 적용한다. #Dicount-getPossibleDiscounts
