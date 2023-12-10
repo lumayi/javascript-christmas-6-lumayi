@@ -21,15 +21,23 @@ export default class Discount {
 
   getWeekdayDiscount() {
     const isWeekend = this.#month.isWeekend();
+    if (isWeekend) return 0;
     const desserts = this.#order.filter(
       (order) => order.section === SECTION.DESSERT,
     );
-    if (!isWeekend) return desserts.length * DISCOUNT.DAYS_DISCOUNT;
+    return desserts.length * DISCOUNT.DAYS_DISCOUNT;
   }
 
   getWeekendDiscount() {
     const isWeekend = this.#month.isWeekend();
+    if (!isWeekend) return 0;
     const mains = this.#order.filter((order) => order.section === SECTION.MAIN);
-    if (isWeekend) return mains.length * DISCOUNT.DAYS_DISCOUNT;
+    return mains.length * DISCOUNT.DAYS_DISCOUNT;
+  }
+
+  getSpecialDiscount() {
+    const isSpecialDay = this.#month.isSpecialDay();
+    if (isSpecialDay) return DISCOUNT.SPECIAL_DISCOUNT;
+    return 0;
   }
 }

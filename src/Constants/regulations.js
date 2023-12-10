@@ -13,4 +13,5 @@ export const DECEMBER = Object.freeze({
 export const DISCOUNT = Object.freeze({
   XMAS_BASIC_DISCOUNT: 1000,
   DAYS_DISCOUNT: 2023,
+  SPECIAL_DISCOUNT: 1000,
 });

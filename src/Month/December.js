@@ -26,8 +26,15 @@ export default class December {
 
   isWeekend() {
     const date = new Date(`${DECEMBER.YEAR}-${DECEMBER.MONTH}-${this.#date}`);
-    const dateToNum = date.getDay();
-    if (dateToNum > 4) return true;
+    const day = date.getDay();
+    if (day > 4) return true;
+    return false;
+  }
+
+  isSpecialDay() {
+    const date = new Date(`${DECEMBER.YEAR}-${DECEMBER.MONTH}-${this.#date}`);
+    const day = date.getDay();
+    if (day === 0 || this.#date === 25) return true;
     return false;
   }
 }
