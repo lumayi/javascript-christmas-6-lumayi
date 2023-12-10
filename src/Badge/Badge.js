@@ -1,4 +1,4 @@
-import BADGE from '../Constants/badge';
+import BADGE from '../Constants/badge.js';
 
 export default class Badge {
   static getBadge(benefits) {

@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import toKoreanCurrency from '../Utils/utils.js';
+import Badge from '../Badge/Badge.js';
 
 const OutputView = {
   printGreet() {
@@ -23,6 +24,7 @@ const OutputView = {
     this.printEachBenefits(discounts);
     this.printTotals(discounts);
     this.printAfterDCPrice(discounts, order);
+    this.printBadge(discounts);
   },
   printComplimentary({ complimentary }) {
     Console.print('\n<증정 메뉴>');
@@ -57,6 +59,12 @@ const OutputView = {
     const afterDCPrice = totalPrice - (xMas + weekday + weekend + special);
     Console.print('\n<할인 후 예상 결제 금액>');
     Console.print(`${toKoreanCurrency(afterDCPrice)}원`);
+  },
+  printBadge({ xMas, weekday, weekend, special, complimentary }) {
+    const total = xMas + weekday + weekend + special + complimentary;
+    const badge = Badge.getBadge(total);
+    Console.print('\n<12월 이벤트 배지>');
+    Console.print(badge);
   },
   printError(error) {
     Console.print(error.message);
