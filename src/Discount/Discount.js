@@ -12,6 +12,7 @@ export default class Discount {
   }
 
   getPossibleDiscounts() {
+    if (this.#isLessThanMinPrice()) return 0;
     const xMas = this.#getXmasDiscount();
     const weekday = this.#getWeekdayDiscount();
     const weekend = this.#getWeekendDiscount();
@@ -24,6 +25,14 @@ export default class Discount {
       special,
       complimentary,
     };
+  }
+
+  #isLessThanMinPrice() {
+    const totalPrice = this.#order.reduce(
+      (acc, current) => acc + current.totalPrice,
+    );
+    if (totalPrice < DISCOUNT.MIN_PRICE_FOR_DISCOUNT) return true;
+    return false;
   }
 
   #getXmasDiscount() {
