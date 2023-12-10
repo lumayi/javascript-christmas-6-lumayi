@@ -1,4 +1,4 @@
-import { NAME, PRICE, SECTION } from '../Constants/menu';
+import { NAME, PRICE, SECTION } from '../Constants/menu.js';
 
 class Menu {
   #name;

@@ -1,8 +1,9 @@
-import WoowahanMenu from './Menu/Menu';
-import December from './Month/December';
-import Order from './Order/Order';
-import InputView from './Views/InputView';
-import OutputView from './Views/OutputView';
+import Discount from './Discount/Discount.js';
+import WoowahanMenu from './Menu/Menu.js';
+import December from './Month/December.js';
+import Order from './Order/Order.js';
+import InputView from './Views/InputView.js';
+import OutputView from './Views/OutputView.js';
 
 export default class Restaurant {
   order = new Order(WoowahanMenu);
@@ -11,6 +12,10 @@ export default class Restaurant {
     OutputView.printGreet();
     const december = await this.#getVisitDate();
     const placedOrder = await this.#getUserOrder(this.order);
+    OutputView.printOrder(placedOrder);
+    const discount = new Discount(december, placedOrder);
+    const discounts = discount.getPossibleDiscounts();
+    OutputView.printBenefits(discounts, placedOrder);
   }
 
   async #getVisitDate() {

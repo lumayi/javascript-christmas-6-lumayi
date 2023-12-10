@@ -1,6 +1,6 @@
-import { SECTION } from '../Constants/menu';
-import { ERROR_MSG } from '../Constants/messages';
-import { ORDER_RULES } from '../Constants/regulations';
+import { SECTION } from '../Constants/menu.js';
+import { ERROR_MSG } from '../Constants/messages.js';
+import { ORDER_RULES } from '../Constants/regulations.js';
 
 export default class Order {
   #menu;
@@ -39,8 +39,12 @@ export default class Order {
   }
 
   #checkTotalQunatity() {
-    const total = this.#order.reduce((acc, current) => acc + current.quantity);
+    const total = this.#order.reduce(
+      (acc, current) => acc + current.quantity,
+      0,
+    );
     if (total > ORDER_RULES.MAX_POSSIBLE_ORDER) {
+      this.#order = [];
       throw new Error(ERROR_MSG.INVALID_MENU);
     }
   }
@@ -50,14 +54,8 @@ export default class Order {
       (order) => order.section === SECTION.DRINK,
     );
     if (drinks.length === this.#order.length) {
+      this.#order = [];
       throw new Error(ERROR_MSG.INVALID_MENU);
     }
-  }
-
-  getTotalPrice() {
-    const total = this.#order.reduce(
-      (acc, current) => acc + current.totalPrice,
-    );
-    return total;
   }
 }

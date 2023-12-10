@@ -1,5 +1,5 @@
-import { SECTION } from '../Constants/menu';
-import { DISCOUNT } from '../Constants/regulations';
+import { SECTION } from '../Constants/menu.js';
+import { DISCOUNT } from '../Constants/regulations.js';
 
 export default class Discount {
   #month;
@@ -47,14 +47,19 @@ export default class Discount {
     const desserts = this.#order.filter(
       (order) => order.section === SECTION.DESSERT,
     );
-    return desserts.length * DISCOUNT.DAYS_DISCOUNT;
+    const quantity = desserts.reduce(
+      (acc, current) => acc + current.quantity,
+      0,
+    );
+    return quantity * DISCOUNT.DAYS_DISCOUNT;
   }
 
   #getWeekendDiscount() {
     const isWeekend = this.#month.isWeekend();
     if (!isWeekend) return 0;
     const mains = this.#order.filter((order) => order.section === SECTION.MAIN);
-    return mains.length * DISCOUNT.DAYS_DISCOUNT;
+    const quantity = mains.reduce((acc, current) => acc + current.quantity, 0);
+    return quantity * DISCOUNT.DAYS_DISCOUNT;
   }
 
   #getSpecialDiscount() {
@@ -66,6 +71,7 @@ export default class Discount {
   #getComplimentaryDiscount() {
     const totalPrice = this.#order.reduce(
       (acc, current) => acc + current.totalPrice,
+      0,
     );
     if (totalPrice >= DISCOUNT.MIN_PRICE_FOR_COMPLIMENTARY) {
       return DISCOUNT.COMPLIMENTARY_DISCOUNT;

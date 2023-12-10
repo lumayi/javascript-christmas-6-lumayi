@@ -1,5 +1,5 @@
-import { ERROR_MSG } from '../Constants/messages';
-import { DECEMBER } from '../Constants/regulations';
+import { ERROR_MSG } from '../Constants/messages.js';
+import { DECEMBER } from '../Constants/regulations.js';
 
 export default class December {
   #date;
