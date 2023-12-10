@@ -1,3 +1,4 @@
+import { SECTION } from '../Constants/menu';
 import { ERROR_MSG } from '../Constants/messages';
 import { ORDER_RULES } from '../Constants/regulations';
 
@@ -13,9 +14,10 @@ export default class Order {
   placeOrder(orders) {
     orders.forEach((order) => {
       const [name, quantity] = order.split('-');
-      this.#validate(name, Number(quantity));
-      this.#order.push({ name, quantity: Number(quantity) });
+      const found = this.#validate(name, Number(quantity));
+      this.#order.push(found);
     });
+    this.#checkPolicies();
   }
 
   #validate(name, quantity) {
@@ -26,13 +28,28 @@ export default class Order {
       !found ||
       !quantity ||
       quantity < 1 ||
-      quantity > ORDER_RULES.MAX_POSSIBLE_ORDER
     ) {
       throw new Error(ERROR_MSG.INVALID_MENU);
     }
     const duplicated = this.#order.find((order) => order.name === name);
     if (duplicated) throw new Error(ERROR_MSG.INVALID_MENU);
+    return found.getMenuInfo(quantity);
   }
 
-  #checkPolicies() {}
+  #checkPolicies() {
+    this.#checkTotalQunatity();
+    this.#checkDrinksOnly();
+  }
+
+  #checkTotalQunatity() {
+    const total = this.#order.reduce((acc, current) => acc + current.quantity);
+    if (total > ORDER_RULES.MAX_POSSIBLE_ORDER) {
+      throw new Error(ERROR_MSG.INVALID_MENU);
+    }
+  }
+
+  #checkDrinksOnly() {
+    const drinks = this.#order.filter((order) => order.section === SECTION.DRINK);
+    if(drinks.length === this.#order.length) throw new Error(ERROR_MSG.INVALID_MENU)
+  }
 }
