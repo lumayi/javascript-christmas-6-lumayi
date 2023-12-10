@@ -16,10 +16,10 @@
 - [x] 총 주문 금액을 구한다.
 - [ ] 할인 전 총 주문 금액을 출력한다. #Output-printTotalOrderPrice
 - [ ] 총 주문 금액 10,000원 미만시 이벤트 적용 불가 #Discount
-- [ ] 선택한 날에 맞는 할인을 적용한다. #Dicount-getPossibleDiscounts
-  - [x] 크리스마스 디데이 할인 getXmasDiscount
-  - [ ] 평일 할인 getWeekdayDiscount
-  - [ ] 주말 할인 getWeekendDiscount
+- [ ] 선택한 날에 맞는 할인을 적용한다.
+  - [x] 크리스마스 디데이 할인
+  - [x] 평일 할인
+  - [x] 주말 할인
   - [ ] 특별 할인 getSpecialDsicount
   - [ ] 증정 이벤트 할인 getComplimentaryDiscount
   - [ ] 혜택이 없을 시, <없음>으로 출력

@@ -23,4 +23,11 @@ export default class December {
     const days = this.#date > DECEMBER.XMAS_DATE ? 0 : this.#date - 1;
     return days;
   }
+
+  isWeekend() {
+    const date = new Date(`${DECEMBER.YEAR}-${DECEMBER.MONTH}-${this.#date}`);
+    const dateToNum = date.getDay();
+    if (dateToNum > 4) return true;
+    return false;
+  }
 }
