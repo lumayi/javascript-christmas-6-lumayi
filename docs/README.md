@@ -3,7 +3,7 @@
 ## 기능 요구 사항
 
 - [ ] 12월 중 방문할 날짜를 받는다. #Output-getOrder
-  - [ ] 1-31 사이의 정수가 아닐시에 예외 처리 #Month -> #December
+  - [x] 1-31 사이의 정수가 아닐시에 예외 처리 #Month -> #December
   - [ ] 이벤트 기간은 12월까지이다. #December
 - [x] 주문가능한 메뉴를 정의
 - [ ] 주문할 메뉴와 개수를 받는다. #Input, #Order-placeOrder
